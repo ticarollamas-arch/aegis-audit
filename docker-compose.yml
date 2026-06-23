@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  aegis-audit:
+    build: .
+    volumes:
+      - ./logs:/var/log/nginx:ro
+      - ./db:/app/db
+    command: ["--log", "/var/log/nginx/access.log", "--format", "json"]
