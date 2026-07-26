@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: aegis-audit:latest
+    container_name: aegis-audit-cli
+    stdin_open: true # Permite interatividade com o CLI
+    tty: true        # Aloca um pseudo-TTY
+    volumes:
+      - .:/app # Monta o código local para desenvolvimento
+      - ./reports:/app/reports # Persiste os relatórios gerados
+    env_file:
+      - .env
